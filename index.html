@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Microbial Source Tracking</title>
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+        
+    <style>
+        #map .cartodb-legend-stack { 
+            position: absolute; 
+            bottom: 50px; 
+            left: 30px;
+            width: 200px;
+            background: rgba(#ffffff);
+            padding: 10px; z-index: 99;
+        }
+
+        html, body, #map {
+            height: 100%;
+            padding: 0;
+            margin: 0;
+       }
+        #selector_menu{
+            position: absolute;
+            top: 20px;
+            right: 20px;
+      	    z-index: 9000;
+       }
+       h1{
+			font-family: 'Oswald', sans-serif;
+			font-size:30px;
+			line-height:100%;
+			font-weight:normal;
+			z-index:1000;
+        }
+        p{
+			font-family: 'Helvetica', sans-serif;
+			font-size:12px;
+			line-height:100%;
+			font-weight:normal;
+			z-index:1000;
+        }
+        #credit{
+			position:absolute;
+			bottom:0;
+			left:0;
+			background:#ccc;
+			font-size:11px;
+			padding:2px 3px 2px 5px;
+			color:#555;
+        }
+	    #intro {
+           position: absolute;
+			top: 20px;
+			left:30px;
+			width:250px;
+            height: 39%;
+			background:#f6f6f6;
+			opacity:1;
+			overflow:auto;
+			padding: 0px 25px 5px 25px;
+			font-size:14px;
+			color:#151515;
+            border: 1px solid black;
+			border-radius:3px;
+			z-index:900;
+		}
+        
+         #charts {
+            position: absolute;
+			Top: 0px;
+			Right: 0px;
+            height: 100%;}
+        
+         #chart1 {
+            position: relative;
+			Top: 10px;
+			Right: 30px;
+            height: 17.3%;
+			background:#f6f6f6;
+			opacity:1;
+			overflow:auto;
+			padding:5px 5px 5px 5px;
+			font-size:14px;
+			color:#151515;
+            border: 1px solid black;
+			border-radius:3px;
+			z-index:900;
+		}
+          #chart2 {
+            position: relative;
+			top: 2%;
+			right:30px;
+            height: 17.3%;
+			background:#f6f6f6;
+			opacity:1;
+			overflow:auto;
+			padding:5px 5px 5px 5px;
+			font-size:14px;
+			color:#151515;
+            border: 1px solid black;
+			border-radius:3px;
+			z-index:900;
+		}
+        #chart3 {
+            position: relative;
+			top: 3%;
+			right:30px;
+            height: 17.3%;
+			background:#f6f6f6;
+			opacity:1;
+			overflow:auto;
+			padding:5px 5px 5px 5px;
+			font-size:14px;
+			color:#151515;
+            border: 1px solid black;
+			border-radius:3px;
+			z-index:900;
+		}
+        #chart4 {
+            position: relative;
+			top: 4%;
+			right:30px;
+            height: 17.3%;
+			background:#f6f6f6;
+			opacity:1;
+			overflow:auto;
+			padding:5px 5px 5px 5px;
+			font-size:14px;
+			color:#151515;
+            border: 1px solid black;
+			border-radius:3px;
+			z-index:900;
+		}
+        #chart5 {
+            position: relative;
+			top: 5%;
+			right:30px;
+            height: 17.3%;
+			background:#f6f6f6;
+			opacity:1;
+			overflow:auto;
+			padding:5px 5px 5px 5px;
+			font-size:14px;
+			color:#151515;
+            border: 1px solid black;
+			border-radius:3px;
+			z-index:900;
+		}   
+    </style>
+      
+    <!-- include cartodb css  -->
+    <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css" />
+    <!-- include cartodb.js library -->
+    <script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
+      
+    </head>
+    
+    <body>
+        <div id='map'></div>
+	       <script>
+		
+		      function init(){
+
+			     var sublayer;
+			     // create leaflet map and define some properties
+                 var map = L.map('map', { 
+                 zoomControl: false,
+                 center: [39.47, -77.4],
+                 zoom: 11
+                 })
+
+                 // add a base layer to map
+                 L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+                 attribution: 'Stamen'
+                 }).addTo(map);
+
+			     var layerUrl = 'https://smitty1788.carto.com/api/v2/viz/37550410-81aa-11e6-84d6-0ef24382571b/viz.json' ;
+			     cartodb.createLayer(map,layerUrl)
+				 .addTo(map)
+                 }
+               window.onload = init;
+
+	       </script>
+
+        <div id="intro">
+				<h1>Synopsis of Bacterial Source Tracking Results</h1>
+				<p>We applied the approach of Kildare et al. to quantitatively detect the source of fecal contamination in several streams in Frederick County.  Water samples were collected from the streams within 24 hours following a 0.5+ inch rain storm (“wet samples”) and from the same location when there was no recent prior rain (“dry samples”).  This approach uses quantitative polymerase chain reaction (qPCR) to determine the presence of DNA sequences in the water specific to bacteria of the order Bacteroidales that reside in either human or ruminant stool.  In addition, we determined the total amount of fecal contamination in each sample with a universal qPCR assay that detects fecal Bacteroidales DNA from any animal source.<br/></p>
+        </div>
+  
+        <div id="charts">
+            <div id="chart1">
+                <iframe src='//charts.hohli.com/embed.html?created=1476112267546#w=240&h=150&d={"containerId":"chart","dataTable":{"cols":[{"label":"Human","type":"string","p":{}},{"label":"Human","type":"number","p":{}},{"label":"Ruminant","type":"number","p":{}},{"label":"Other","type":"number"}],"rows":[{"c":[{"v":"Wet"},{"v":117.1},{"v":3206.4},{"v":36464.0}]},{"c":[{"v":"Dry"},{"v":7.3},{"v":48.7},{"v":2244.7}]}]},"options":{"hAxis":{"useFormatFromData":true,"viewWindow":null,"minValue":null,"maxValue":null,"viewWindowMode":null},"legacyScatterChartLabels":true,"vAxes":[{"useFormatFromData":true,"viewWindow":{"max":40000,"min":null},"minValue":null,"maxValue":40000,"logScale":false,"title":"genome copies/ml","viewWindowMode":"pretty","gridlines":{"color":"none"}},{"useFormatFromData":true,"viewWindow":{"max":null,"min":null},"minValue":null,"maxValue":null,"logScale":false}],"isStacked":true,"booleanRole":"certainty","legend":"bottom","width":240,"height":150,"title":"Owens Creek","titleTextStyle":{"color":"#000","fontSize":12,"bold":true,"italic":false},"domainAxis":{"direction":1},"backgroundColor":{"fill":"#ffffff"},"focusTarget":"category","series":{"0":{"errorBars":{"errorType":"none"},"color":"#0000ff"}}},"state":{},"view":{"columns":null,"rows":null},"isDefaultVisualization":false,"chartType":"ColumnChart"}' frameborder='0' width='250' height='160'></iframe>
+            </div>
+            
+            <div id="chart2">
+                <iframe src='//charts.hohli.com/embed.html?created=1476112097845#w=240&h=150&d={"containerId":"chart","dataTable":{"cols":[{"label":"Human","type":"string","p":{}},{"label":"Human","type":"number","p":{}},{"label":"Ruminant","type":"number","p":{}},{"label":"Other","type":"number"}],"rows":[{"c":[{"v":"Wet"},{"v":116.5},{"v":7.7},{"v":5927.2}]},{"c":[{"v":"Dry"},{"v":21.5},{"v":31.4},{"v":5394.5}]}]},"options":{"hAxis":{"useFormatFromData":true,"viewWindow":null,"minValue":null,"maxValue":null,"viewWindowMode":null},"legacyScatterChartLabels":true,"vAxes":[{"useFormatFromData":true,"viewWindow":{"max":6000,"min":null},"minValue":null,"maxValue":6000,"logScale":false,"title":"genome copies/ml","viewWindowMode":"pretty","gridlines":{"color":"none"}},{"useFormatFromData":true,"viewWindow":{"max":null,"min":null},"minValue":null,"maxValue":null,"logScale":false}],"isStacked":true,"booleanRole":"certainty","legend":"bottom","width":240,"height":150,"title":"Carroll Creek","titleTextStyle":{"color":"#000","fontSize":12,"bold":true,"italic":false},"domainAxis":{"direction":1},"backgroundColor":{"fill":"#ffffff"},"focusTarget":"category","series":{"0":{"errorBars":{"errorType":"none"},"color":"#0000ff"}}},"state":{},"view":{"columns":null,"rows":null},"isDefaultVisualization":false,"chartType":"ColumnChart"}' frameborder='0' width='250' height='160'></iframe>
+            </div>
+            
+            <div id="chart3">
+                <iframe src='//charts.hohli.com/embed.html?created=1476110863210#w=240&h=150&d={"containerId":"chart","dataTable":{"cols":[{"label":"Human","type":"string","p":{}},{"label":"Human","type":"number","p":{}},{"label":"Ruminant","type":"number","p":{}},{"label":"Other","type":"number"}],"rows":[{"c":[{"v":"Wet"},{"v":25.7},{"v":688.5},{"v":3808.1}]},{"c":[{"v":"Dry"},{"v":73.9},{"v":47.1},{"v":4986.3}]}]},"options":{"hAxis":{"useFormatFromData":true,"viewWindow":null,"minValue":null,"maxValue":null,"viewWindowMode":null},"legacyScatterChartLabels":true,"vAxes":[{"useFormatFromData":true,"viewWindow":{"max":6000,"min":null},"minValue":null,"maxValue":6000,"logScale":false,"title":"genome copies/ml","viewWindowMode":"pretty","gridlines":{"color":"none"}},{"useFormatFromData":true,"viewWindow":{"max":null,"min":null},"minValue":null,"maxValue":null,"logScale":false}],"isStacked":true,"booleanRole":"certainty","legend":"bottom","width":240,"height":150,"title":"Ballenger Creek Dog Park","titleTextStyle":{"color":"#000","fontSize":12,"bold":true,"italic":false},"domainAxis":{"direction":1},"backgroundColor":{"fill":"#ffffff"},"focusTarget":"category","series":{"0":{"errorBars":{"errorType":"none"},"color":"#0000ff"}}},"state":{},"view":{"columns":null,"rows":null},"isDefaultVisualization":false,"chartType":"ColumnChart"}' frameborder='0' width='250' height='160'></iframe>
+            </div>
+            
+            <div id="chart4">
+                <iframe src='//charts.hohli.com/embed.html?created=1476110150009#w=240&h=150&d={"containerId":"chart","dataTable":{"cols":[{"label":"Human","type":"string","p":{}},{"label":"Human","type":"number","p":{}},{"label":"Ruminant","type":"number","p":{}},{"label":"Other","type":"number"}],"rows":[{"c":[{"v":"Wet"},{"v":10.8},{"v":334.2},{"v":1554.8}]},{"c":[{"v":"Dry"},{"v":14.1},{"v":361.6},{"v":54.5}]}]},"options":{"hAxis":{"useFormatFromData":true,"viewWindow":null,"minValue":null,"maxValue":null,"viewWindowMode":null},"legacyScatterChartLabels":true,"vAxes":[{"useFormatFromData":true,"viewWindow":{"max":6000,"min":null},"minValue":null,"maxValue":6000,"logScale":false,"title":"genome copies/ml","viewWindowMode":"pretty","gridlines":{"color":"none"}},{"useFormatFromData":true,"viewWindow":{"max":null,"min":null},"minValue":null,"maxValue":null,"logScale":false}],"isStacked":true,"booleanRole":"certainty","legend":"bottom","width":240,"height":150,"title":"Ballenger Creek","titleTextStyle":{"color":"#000","fontSize":12,"bold":true,"italic":false},"domainAxis":{"direction":1},"backgroundColor":{"fill":"#ffffff"},"focusTarget":"category","series":{"0":{"errorBars":{"errorType":"none"},"color":"#0000ff"}}},"state":{},"view":{"columns":null,"rows":null},"isDefaultVisualization":false,"chartType":"ColumnChart"}' frameborder='0' width='250' height='160'></iframe>
+            </div>
+   
+            <div id="chart5">
+                <iframe src='//charts.hohli.com/embed.html?created=1476111935872#w=240&h=150&d={"containerId":"chart","dataTable":{"cols":[{"label":"Human","type":"string","p":{}},{"label":"Human","type":"number","p":{}},{"label":"Ruminant","type":"number","p":{}},{"label":"Other","type":"number"}],"rows":[{"c":[{"v":"Wet"},{"v":5.9},{"v":19.7},{"v":969.9}]},{"c":[{"v":"Dry"},{"v":13.3},{"v":123.8},{"v":4786.7}]}]},"options":{"hAxis":{"useFormatFromData":true,"viewWindow":null,"minValue":null,"maxValue":null,"viewWindowMode":null},"legacyScatterChartLabels":true,"vAxes":[{"useFormatFromData":true,"viewWindow":{"max":6000,"min":null},"minValue":null,"maxValue":6000,"logScale":false,"title":"genome copies/ml","viewWindowMode":"pretty","gridlines":{"color":"none"}},{"useFormatFromData":true,"viewWindow":{"max":null,"min":null},"minValue":null,"maxValue":null,"logScale":false}],"isStacked":true,"booleanRole":"certainty","legend":"bottom","width":240,"height":150,"title":"Peter Pan Run","titleTextStyle":{"color":"#000","fontSize":12,"bold":true,"italic":false},"domainAxis":{"direction":1},"backgroundColor":{"fill":"#ffffff"},"focusTarget":"category","series":{"0":{"errorBars":{"errorType":"none"},"color":"#0000ff"}}},"state":{},"view":{"columns":null,"rows":null},"isDefaultVisualization":false,"chartType":"ColumnChart"}' frameborder='0' width='250' height='160'></iframe>
+            </div>
+        </div>
+    
+  
+	   <div id="credit">Created by <a href="http://howardsmithr.s3-website-us-west-2.amazonaws.com">Randy Smith</a> |</div>
+    </body>
+</html>
